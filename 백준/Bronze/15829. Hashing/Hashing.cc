@@ -1,5 +1,4 @@
 #include <iostream>
-#include<cmath>
 using namespace std;
 
 int main() {
@@ -7,9 +6,12 @@ int main() {
     cin >> l;
     char s[l];  
     cin >> s;
-    double sum =0;
+    long long sum = 0;
+    long long hash = 1;
     for(int i=0; i<l; i++){
-        sum += (int(s[i])-96)*pow(31,i);        
+        int temp = s[i]-'a'+1;        
+        sum = (sum+temp*hash)%1234567891;
+        hash = (hash*31)%1234567891;
     }
-    cout << int(sum)%1234567891;
+    cout << sum;
 }
